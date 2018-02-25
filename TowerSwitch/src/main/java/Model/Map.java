@@ -12,8 +12,12 @@ public class Map {
         this.width = width;
         this.height = height;
     }
-    
-    
+    public int viewWidth(){
+        return this.width;
+    }
+    public int viewHeight(){
+        return this.height;
+    }
     
     
     
