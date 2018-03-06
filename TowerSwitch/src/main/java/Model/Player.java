@@ -6,9 +6,31 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private ArrayList<Tower> list_tower = new ArrayList();
+    private StoreTower store_tower = new StoreTower();
+    private int gold = 50;
     
-    public void addTower(Tower tower){
-        list_tower.add(tower);
+    
+    
+    public Player(){
+        
+    }
+    
+    public int viewGold(){
+        return this.gold;
+    }
+    
+    
+    public String addTower(Tower tower, int x, int y){
+        //add tower on map with x and y
+        
+        if(tower.viewPrice() <= this.gold){
+            tower.position(x, y);
+            list_tower.add(tower);
+            this.gold-= tower.viewPrice();
+            return "Tower addded";
+        }else{
+            return "No money";
+        }
     }
     
     public ArrayList<Tower> returnTowerByY(int y){
@@ -24,11 +46,17 @@ public class Player {
     }
     
     
-    
-    
     public Tower viewTower(int x){
         return list_tower.get(x);
     }
+    public ArrayList<Tower> viewTowers(){
+        return list_tower;
+    }
     
-    
+    public StoreTower viewStoreTower(){
+        return this.store_tower;
+    }
+
+
+
 }
