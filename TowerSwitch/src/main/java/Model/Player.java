@@ -19,7 +19,6 @@ public class Player {
         return this.gold;
     }
     
-    
     public String addTower(Tower tower, int x, int y){
         //add tower on map with x and y
         
@@ -45,6 +44,16 @@ public class Player {
         return towerY;
     }
     
+    public ArrayList<Tower> returnTowerByYAndTower(ArrayList<Tower> towers, int y){
+        ArrayList<Tower> towerY = new ArrayList();
+        
+        for(int i=0; i< towers.size(); i++){
+            if(towers.get(i).viewY()== y){
+                towerY.add(towers.get(i));
+            }
+        } 
+        return towerY;
+    }
     
     public Tower viewTower(int x){
         return list_tower.get(x);

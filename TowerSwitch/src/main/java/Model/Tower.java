@@ -22,6 +22,9 @@ public class Tower {
         this.y = y;
         this.distance = distance; //casse ou elle peut attaquer
     }
+    
+    
+    //GET
     public int viewPrice(){
         return this.price;
     }
@@ -35,15 +38,24 @@ public class Tower {
         return this.damage;
     }
     public int viewHp(){
-        return this.damage;
+        return this.hp;
     }
     public int viewY(){
         return this.y;
     }
+    public int viewX(){
+        return this.x;
+    }
+
+
+    
+    //set
     public void position(int x, int y){
         this.x = x;
         this.y = y;
     }
-
+    public void removeHp(int x){
+        this.hp -= x;
+    }
         
 }
