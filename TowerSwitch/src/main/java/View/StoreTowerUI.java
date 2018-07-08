@@ -3,8 +3,17 @@ package View;
 
 import Model.Player;
 import Model.Tower;
+import static View.startUI.window;
+import com.sun.imageio.plugins.jpeg.JPEG;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class StoreTowerUI {
     
@@ -15,19 +24,38 @@ public class StoreTowerUI {
     public StoreTowerUI(Player player){
         this.player1 = player;
         this.store_tower = player.viewStoreTower().viewTowers(); //pour le joeur, voir son store, voir les tours dans le store
+        
     }
      
     public void viewStore(){
-        System.out.println("SHOP : ");
         
-        System.out.println("n'   HP      Damage     Price");
+        String[] [] infos = {};
+        
+        JPanel tab = new JPanel();
+        tab.setLayout(new GridLayout(this.store_tower.size()+1, 4));
+        
+        tab.add(new JLabel("n'   HP      Damage     Price"));
         
         for(int i =0; i < this.store_tower.size(); i++){
-            System.out.println("(" + i + ")   " + this.store_tower.get(i).viewHp()+"      " + this.store_tower.get(i).viewDamage()+"         " + this.store_tower.get(i).viewPrice());
- 
+            tab.add(new JLabel("(" + i + ")   " + this.store_tower.get(i).viewHp()+"      " + this.store_tower.get(i).viewDamage()+"         " + this.store_tower.get(i).viewPrice()));
+            
         }
         
-       menu();
+        JPanel storeTab = new JPanel();
+        storeTab.add(tab , BorderLayout . NORTH);
+        
+        Container cp = startUI.window.getContentPane();
+        cp.setVisible(false);
+        cp.removeAll();
+        
+        cp.add(new JLabel("Store :"), BorderLayout.NORTH);
+        cp.add ( storeTab , BorderLayout . CENTER );
+        cp.add(new JLabel("Store :"), BorderLayout.SOUTH);
+        cp.setVisible(true);
+        
+        
+        
+       //menu();
         
     }
     
