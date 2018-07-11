@@ -11,17 +11,22 @@ import View.MobUI;
 import View.Tower;
 import View.Windows;
 import static View.Windows.player;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import static java.lang.Math.ceil;
 import static java.lang.Math.round;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
  * @author oguyot
  */
 public class Listener implements MouseListener{
+    
+    private int i = 0;
+    private Timer mobAdvence;
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -54,16 +59,37 @@ public class Listener implements MouseListener{
             
            Model.Mob mob = new Mob("zombi", 10, 5, (69*9)+265, (79*nbY)+80, 1456);
            
+           
            Windows.listMob.add(mob);
            
            mobUI.setBounds((int) (69*9)+265,(79*nbY)+80,69 , 100);
-           Windows.LPane.add(mobUI, new Integer(2));
-            
+           Windows.LPane.add(mobUI, new Integer(3));
+           
+           mobAdvence = new Timer(60, (ActionEvent event)-> mooveMob(mobUI, nbY));
+           
+           mobAdvence.start();
+
+           
         } else{
            JOptionPane.showMessageDialog(null,"Vous n'avez pas assez d'argent ...");
 
         }
         
+        
+        
+    }
+    
+    public void mooveMob(MobUI mob, int nbY){
+        Boolean end = false;
+        i++;
+        
+        if(i<690){
+            mob.setBounds((int) ((69*9)+265)-1*i,(79*nbY)+80,69 , 100);
+        } else {
+            JOptionPane.showMessageDialog(null,"Vous avez perdu !");
+            mobAdvence.stop();
+
+        }
         
         
     }
