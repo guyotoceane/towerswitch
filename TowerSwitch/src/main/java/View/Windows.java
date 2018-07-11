@@ -41,11 +41,13 @@ public class Windows {
 
          bg.setBounds(0,0,4000 , 626);
 
+         
          //grille.setBounds(0,0,2000, 600);
-         bg.addMouseListener(new Listener());
+         
         
 
          LPane.add(bg, new Integer(1));
+         
 
          //LPane.add(grille, new Integer(2));
 
@@ -53,6 +55,10 @@ public class Windows {
          jf.setDefaultCloseOperation(jf.EXIT_ON_CLOSE);
 
          jf.setVisible(true);
+         
+        JOptionPane.showMessageDialog(null,"Bienvenue ! ");
+
+        bg.addMouseListener(new Listener());
 
      }
 }

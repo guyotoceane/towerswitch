@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Mob;
 import Model.Player;
+import View.MobUI;
 import View.Tower;
 import View.Windows;
 import static View.Windows.player;
@@ -28,7 +29,10 @@ public class Listener implements MouseListener{
         
         //Graphic towerUI
         Tower towerUI = new Tower();
+        MobUI mobUI = new MobUI();
         
+        
+        towerUI.setOpaque(false);
         
         towerUI.setOpaque(false);
         
@@ -48,7 +52,12 @@ public class Listener implements MouseListener{
             towerUI.setBounds((int) (69*nbX)+265,(79*nbY)+80,69 , 80);
             Windows.LPane.add(towerUI, new Integer(2));
             
-            Windows.listMob.add(new Mob("zombi", 10, 5, (69*9)+265, (79*nbY)+80, 1456));
+           Model.Mob mob = new Mob("zombi", 10, 5, (69*9)+265, (79*nbY)+80, 1456);
+           
+           Windows.listMob.add(mob);
+           
+           mobUI.setBounds((int) (69*9)+265,(79*nbY)+80,69 , 100);
+           Windows.LPane.add(mobUI, new Integer(2));
             
         } else{
            JOptionPane.showMessageDialog(null,"Vous n'avez pas assez d'argent ...");
