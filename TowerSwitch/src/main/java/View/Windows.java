@@ -25,6 +25,7 @@ public class Windows {
     public static Player player = new Player();
             
     public static ArrayList<Mob> listMob = new ArrayList();
+    public static ArrayList<MobUI> listMobUI = new ArrayList();
 
 
     background bg = new background();
@@ -38,25 +39,15 @@ public class Windows {
 
          jf.getContentPane().add(LPane);
         
-
          bg.setBounds(0,0,4000 , 626);
-
          
-         //grille.setBounds(0,0,2000, 600);
-         
-        
-
          LPane.add(bg, new Integer(1));
-         
-
-         //LPane.add(grille, new Integer(2));
-
 
          jf.setDefaultCloseOperation(jf.EXIT_ON_CLOSE);
 
          jf.setVisible(true);
          
-        JOptionPane.showMessageDialog(null,"Bienvenue ! ");
+        JOptionPane.showMessageDialog(null,"Bienvenue ! \n Vous Disposez de " + player.viewGold()+" pièces. \n Une fleur vaut 20 pièces, vous n'avez qu'a cliquer pour l'ajouter ! \n bon courage !");
 
         bg.addMouseListener(new Listener());
 
